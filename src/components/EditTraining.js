@@ -6,6 +6,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import { trainings_id } from "../constants";
+import ReactDatepicker from "./DatePicker";
 
 export default function EditTraining(props) {
   const [open, setOpen] = React.useState(false);
@@ -18,9 +19,9 @@ export default function EditTraining(props) {
 
   const handleClickOpen = () => {
     setOpen(true);
-    console.log(props.data.id);
+    console.log(props.data.date);
     setTraining({
-      date: props.data.date,
+      date: new Date(props.data.date),
       duration: props.data.duration,
       activity: props.data.activity,
     });
@@ -41,14 +42,11 @@ export default function EditTraining(props) {
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Edit Training</DialogTitle>
         <DialogContent>
-          <TextField
-            margin="dense"
-            label="date"
-            value={training.date}
-            onChange={(e) => setTraining({ ...training, date: e.target.value })}
-            fullWidth
-            variant="standard"
-          />
+          <ReactDatepicker
+            selected={training.date}
+            onChange={(e) => setTraining({ ...training, date: e })}
+          ></ReactDatepicker>
+
           <TextField
             margin="dense"
             label="duration"

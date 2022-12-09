@@ -12,7 +12,6 @@ export default function PieChart() {
           ({ date, content, links, value, ...item }) => item
         );
         setChart(newArray);
-        console.log(newArray);
       });
   };
 
@@ -20,7 +19,7 @@ export default function PieChart() {
     getChart();
   }, []);
 
-  // En huomannut mainintaa Lodash-kirjastosta joten tein aktiviteettien yhdistämisen itse
+  // Didn't see the mention about Lodash library so I did the combination manually
   var result = [];
   chart.reduce(function (res, value) {
     if (!res[value.activity]) {
@@ -39,9 +38,9 @@ export default function PieChart() {
   return (
     <div>
       <Chart
-        width={"500px"}
-        height={"300px"}
-        chartType="PieChart"
+        width={"1000px"}
+        height={"500px"}
+        chartType="Bar"
         loader={<div>Loading Chart</div>}
         data={data}
         options={{
@@ -49,9 +48,9 @@ export default function PieChart() {
         }}
       />
       <Chart
-        width={"500px"}
-        height={"300px"}
-        chartType="Bar"
+        width={"1000px"}
+        height={"500px"}
+        chartType="PieChart"
         loader={<div>Loading Chart</div>}
         data={data}
         options={{

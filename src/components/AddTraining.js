@@ -6,11 +6,17 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 
+import ReactDatepicker from "./DatePicker";
+
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
 export default function AddTraining(props) {
   const [open, setOpen] = React.useState(false);
+  // const [startDate, setStartDate] = useState();
 
   const [training, setTraining] = React.useState({
-    date: "",
+    date: new Date(),
     duration: "",
     activity: "",
     customer: props.data.links[0].href,
@@ -28,22 +34,20 @@ export default function AddTraining(props) {
     props.addTraining(training);
     setOpen(false);
   };
+
   return (
     <div>
       <Button size="small" variant="outlined" onClick={handleClickOpen}>
-        New training
+        New Training
       </Button>
+
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>New Training</DialogTitle>
         <DialogContent>
-          <TextField
-            margin="dense"
-            label="date"
-            value={training.date}
-            onChange={(e) => setTraining({ ...training, date: e.target.value })}
-            fullWidth
-            variant="standard"
-          />
+          <ReactDatepicker
+            selected={training.date}
+            onChange={(e) => setTraining({ ...training, date: e })}
+          ></ReactDatepicker>
           <TextField
             margin="dense"
             label="Duration"

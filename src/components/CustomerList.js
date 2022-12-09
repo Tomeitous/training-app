@@ -15,7 +15,6 @@ function Customerlist() {
   const [customers, setCustomers] = useState([]);
 
   const newArray = customers.map(({ content, links, ...item }) => item);
-  console.log(newArray);
 
   // My excel separator is semicolon instead of comma?
   const csvArray = convertArrayToCSV(newArray).replaceAll(",", ";");
