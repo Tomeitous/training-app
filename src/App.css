@@ -13,6 +13,14 @@
   }
 }
 
+.rbc-month-view {
+  height: 100vh;
+}
+
+.rbc-calendar {
+  min-height: 580px;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
